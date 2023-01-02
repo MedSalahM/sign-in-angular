@@ -1,1 +1,59 @@
-<p>login works!</p>
+
+<div class="container">
+
+    <div class="row mt-5">
+
+
+        <form   ngForm #login="ngForm">
+
+
+        <div class="col-md-10 mx-auto ">
+
+       
+          
+             <div class="mt-5 p-5 border shadow-ms">
+
+                <div class="row mt-2 mb-5">
+                    <div class="col">
+                        <h2>Login</h2>
+                    </div>
+                </div>
+          
+                <div class="row mt-2">
+
+                    <div class="col-3"><h5>username</h5></div>
+                    <div class="col">
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" ngModel>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-3"><h5>password</h5></div>
+                    <div class="col">
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" ngModel>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-3"></div>
+                    <div class="col"> <button class="btn btn-primary" (click)="sendLogin(login)">Se connecter</button></div>
+                  
+                </div>
+                 
+    
+
+             </div>
+
+
+        </div>
+
+    </form>
+
+
+    </div>
+</div>
