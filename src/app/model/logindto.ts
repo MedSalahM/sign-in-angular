@@ -1,5 +1,8 @@
+import { Region } from "./region";
+
 export interface loginDto{
 
     username:string,
-    password:string
+    password:string,
+    region:Region
 }
