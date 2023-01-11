@@ -16,10 +16,6 @@ export class HomeComponent implements OnInit {
   user!: AppUser
 
 
-
-  
-  
-  
   constructor(private userService:UserService ,
               private authService:AuthenticationService ,
               private router : Router
@@ -33,7 +29,9 @@ export class HomeComponent implements OnInit {
 
       })
 
-      
+
+     
+    
       
   }
 

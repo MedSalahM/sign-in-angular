@@ -34,21 +34,31 @@ export class LoginComponent implements OnInit {
                  { }
 
   errorMessage!:string
-
+  isLoggedIn :boolean = false;
   ngOnInit(): void {
 
-  
+   
+    this.authService.getToken()
+    this.isLoggedIn=this.authService.isLoggedIn()
+
+
+    if(this.isLoggedIn){
+
+      this.route.navigateByUrl("/home")
+
+
+    }
 
   }
 
   sendLogin(login:any){
 
-    const values=login.value
+       const values=login.value
 
-  const loginDto :loginDto ={
-  username:values.username ,
-  password:values.password,
-  region:values.region
+      const loginDto :loginDto ={
+      username:values.username ,
+      password:values.password,
+      region:values.region
 
 }
 
