@@ -15,15 +15,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  regions:Region[]=[
-    {
-      id:1,
-      regionLabel:"TEBESSA"
-
-  },{
-    id:2,
-    regionLabel:"ANNABA"
-  }]
+  regions$ !:Observable<string[]>
 
   constructor(
                  private authService:AuthenticationService,
@@ -36,6 +28,8 @@ export class LoginComponent implements OnInit {
   errorMessage!:string
   isLoggedIn :boolean = false;
   ngOnInit(): void {
+
+    this.regions$ = this.userService.regions()
 
    
     this.authService.getToken()
@@ -62,7 +56,7 @@ export class LoginComponent implements OnInit {
 
 }
 
-console.log(loginDto)
+     console.log(loginDto)
 
       this.authService.login(loginDto)
       .subscribe(r=>{

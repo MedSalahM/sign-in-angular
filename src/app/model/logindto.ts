@@ -4,5 +4,5 @@ export interface loginDto{
 
     username:string,
     password:string,
-    region:Region
+    region:string
 }

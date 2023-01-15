@@ -38,8 +38,8 @@
                             <select type="text" class="form-control form-control-sm"
                              name="region" ngModel required #tempRegion="ngModel">
                              
-                            <option *ngFor="let region of regions" [ngValue]="region">
-                                {{region.regionLabel}}
+                            <option *ngFor="let region of regions$ | async" [ngValue]="region">
+                                {{region}}
                             </option>
 
                             </select>

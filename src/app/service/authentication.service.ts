@@ -29,7 +29,7 @@ login(login : loginDto) : Observable<any>{
   const body = new HttpParams()
   .set('username', login.username)
   .set('password', login.password)
-  .set('regionId',login.region.id)
+  .set('region',login.region)
  
 
   return this.http.post(`${this.url}/login`,body ,{observe:'response' , headers: new HttpHeaders()

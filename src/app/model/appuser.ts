@@ -3,5 +3,5 @@ export interface AppUser{
     id:number,
     username:string,
     password:string,
-    region:Region
+    region:string
 }

@@ -23,7 +23,7 @@ export class UserService {
 
   public regions():Observable<any>{
 
-    return this.http.get<Region[]>(`${this.url}/sign-in/region`)
+    return this.http.get<Region[]>(`${this.url}/region`)
   }
 
   
