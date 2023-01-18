@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { loginDto } from 'src/app/model/logindto';
 import { Region } from 'src/app/model/region';
 import { AuthenticationService } from 'src/app/service/authentication.service';
@@ -16,7 +16,10 @@ import { UserService } from 'src/app/service/user.service';
 export class LoginComponent implements OnInit {
 
   regions$ !:Observable<string[]>
+  usernames$ !:Observable<string[]>
+  names:string=""
 
+  showUsers:boolean=false;
   constructor(
                  private authService:AuthenticationService,
                  private userService:UserService,
@@ -47,8 +50,7 @@ export class LoginComponent implements OnInit {
 
   sendLogin(login:any){
 
-       const values=login.value
-
+     const values=login.value
       const loginDto :loginDto ={
       username:values.username ,
       password:values.password,
@@ -56,7 +58,6 @@ export class LoginComponent implements OnInit {
 
 }
 
-     console.log(loginDto)
 
       this.authService.login(loginDto)
       .subscribe(r=>{
@@ -98,6 +99,25 @@ export class LoginComponent implements OnInit {
       }
 
       )
+
+  }
+
+
+  getUsernames(login:any){
+
+    const reg=login.value.region;
+
+   
+
+    this.userService.usernamesByRegion(reg)
+    .subscribe(username=>{
+      this.names=username.toString()
+      
+    })
+   
+   
+
+  
 
   }
 

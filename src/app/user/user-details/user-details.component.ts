@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { NotifierService } from 'angular-notifier';
+import { map } from 'rxjs';
 import { AppUser } from 'src/app/model/appuser';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-user-details',
+  templateUrl: './user-details.component.html',
+  styleUrls: ['./user-details.component.css']
 })
-export class HomeComponent implements OnInit {
+export class UserDetailsComponent implements OnInit {
+
 
   user!: AppUser
   authenticated:boolean;
@@ -18,6 +20,8 @@ export class HomeComponent implements OnInit {
   constructor(private userService:UserService ,
               private authService:AuthenticationService ,
               private router : Router
+              ,
+                 private notifier :NotifierService
               ){}
 
   ngOnInit(): void {
@@ -46,5 +50,28 @@ export class HomeComponent implements OnInit {
 
  }
 
+ edit(){
+ 
+  this.userService.update(this.user)
+       .subscribe(r=>{
+
+         
+        
+      this.notifier.notify('info','Modification réussite ! vous devez reconnecter ')  
+
+      setTimeout(()=>{
+
+    
+         this.authService.logout()
+
+
+      },3000)
+
+
+
+       })
+
+
+ }
 
 }

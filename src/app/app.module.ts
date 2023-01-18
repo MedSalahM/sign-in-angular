@@ -11,6 +11,8 @@ import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './inter/auth.interceptor';
 import { MaterialIcon } from 'material-icons';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
+import { UserDetailsComponent } from './user/user-details/user-details.component';
+
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -60,6 +62,7 @@ const customNotifierOptions: NotifierOptions = {
     AppComponent,
     LoginComponent,
     HomeComponent,
+    UserDetailsComponent,
     
   ],
   imports: [

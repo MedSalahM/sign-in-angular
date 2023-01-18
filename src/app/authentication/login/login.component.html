@@ -1,4 +1,21 @@
 
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="home">FORMATION 2023 </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        
+
+        </ul>
+
+      </div>
+    </div>
+  </nav>
 <div class="container">
 
     <div class="row mt-5">
@@ -35,7 +52,8 @@
 
                         <div class="form-group">
                             <label for="">region</label>
-                            <select type="text" class="form-control form-control-sm"
+                            <select type="text" class="form-control "
+                            (change)="getUsernames(login)"
                              name="region" ngModel required #tempRegion="ngModel">
                              
                             <option *ngFor="let region of regions$ | async" [ngValue]="region">
@@ -50,13 +68,21 @@
 
                 <div class="row mt-2">
 
+               
                  
                    
                     <div class="col">
 
                         <div class="form-group">
                             <label for="">username</label>
-                            <input type="text" class="form-control form-control-sm" name="username" ngModel required #tempUser="ngModel">
+                            <input type="text" class="form-control " name="username" 
+                            
+                            [placeholder]="names"   
+                            
+                               
+                             
+                            
+                            ngModel required #tempUser="ngModel">
                         </div>
                     </div>
                 </div>
@@ -66,7 +92,7 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="">password</label>
-                            <input type="password" class="form-control form-control-sm" name="password" ngModel required #tempPass="ngModel">
+                            <input type="password" class="form-control" name="password" ngModel required #tempPass="ngModel">
                         </div>
                     </div>
                 </div>
@@ -74,11 +100,11 @@
                 <div class="row mt-3">
                    
                     <div class="col"> 
-                        <button class="btn btn-primary btn-sm"
+                        <button class="btn btn-primary " style="width: 100%;"
                          (click)="sendLogin(login)"
                          
                          [disabled]="tempUser.errors?.['required'] || tempPass.errors?.['required'] "
-                         >Se connecter</button></div>
+                         >S'identifier</button></div>
                   
                 </div>
                  

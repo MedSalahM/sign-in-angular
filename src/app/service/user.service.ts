@@ -26,6 +26,15 @@ export class UserService {
     return this.http.get<Region[]>(`${this.url}/region`)
   }
 
-  
+  public update(user:AppUser):Observable<any>{
+
+    return this.http.put<number>(`${this.url}/user` , user)
+  }
+
+  public usernamesByRegion(region:string):Observable<string[]>{
+
+    return this.http.get<string[]>(`${this.url}/user/username?region=${region}`)
+  }
+
 
 }
