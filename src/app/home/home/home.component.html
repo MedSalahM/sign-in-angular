@@ -58,6 +58,12 @@
              
                <div class="col">
 
+                
+               <!-- <app-system-users>
+
+                  
+                </app-system-users>
+                 -->
 
 
                </div>
@@ -66,9 +72,72 @@
 
 
 
+
+
             </div>
 
        </div>
+
+
+       <div class="row mt-5">
+
+        <div class="col-md-6 mx-auto  p-3 border rounded shadow-ms ">
+          
+          <p>commande powershell</p>
+
+          <div class="form-group">
+
+
+            <form ngForm #form="ngForm">
+
+            
+
+            <textarea name="commandeToSend"  cols="30" rows="5" class="form-control"
+             ngModel #commande="ngModel"
+             required>
+
+            </textarea>
+
+
+           </form>
+
+            <button class="btn btn-primary mt-2" (click)="displayCommande(form)"   [disabled]="
+            commande.value=='' ||
+            (commande.errors?.['required'])">Executer</button>
+             
+            
+           <div class="row mt-2">
+            
+            <div class="col">
+
+              <div *ngIf="hasResponse" class="alert alert-success">
+
+                  <p>{{response}}</p>
+  
+               </div>
+
+               <div *ngIf="hasError" class="alert alert-danger">
+
+                <p>{{error}}</p>
+
+             </div>
+
+
+
+
+               
+            </div>
+            
+           </div>
+
+
+          </div>
+        
+        </div>
+          
+      </div>
+
+
 
   </div>
 
