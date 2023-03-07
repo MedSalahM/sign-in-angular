@@ -13,8 +13,7 @@ import { MaterialIcon } from 'material-icons';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { SystemUsersComponent } from './system/system-users/system-users.component';
-
-
+import { CreateUserComponent } from './system/create-user/create-user.component';
 const customNotifierOptions: NotifierOptions = {
   position: {
 		horizontal: {
@@ -65,6 +64,8 @@ const customNotifierOptions: NotifierOptions = {
     HomeComponent,
     UserDetailsComponent,
     SystemUsersComponent,
+    CreateUserComponent,
+    
     
   ],
   imports: [
@@ -76,6 +77,8 @@ const customNotifierOptions: NotifierOptions = {
     NotifierModule.withConfig(
       customNotifierOptions,
     )
+
+    
     
   ],
   providers: [{provide:HTTP_INTERCEPTORS , useClass:AuthInterceptor , multi:true}],
