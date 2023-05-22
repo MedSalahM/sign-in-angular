@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AppUser } from 'src/app/model/appuser';
+import { CreateProjectDto } from 'src/app/model/create-project';
 import { AuthenticationService } from 'src/app/service/authentication.service';
+import { ProjectService } from 'src/app/service/project.service';
 import { UserService } from 'src/app/service/user.service';
 import { SystemUsersService } from 'src/app/system/system-users.service';
 
@@ -15,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   user!: AppUser
   authenticated:boolean;
-  commandToSend:string
+  commandToSend:CreateProjectDto
   hasResponse : boolean
   response:string
 
@@ -24,7 +26,8 @@ export class HomeComponent implements OnInit {
   constructor(private userService:UserService ,
               private authService:AuthenticationService ,
               private router : Router ,
-              private systemService:SystemUsersService
+              private systemService:SystemUsersService, 
+              private projectService:ProjectService
               ){}
 
   ngOnInit(): void {
@@ -54,7 +57,12 @@ export class HomeComponent implements OnInit {
  }
 
  displayCommande(a:any){
-  this.commandToSend = a.value.commandeToSend
+
+  this.commandToSend = {
+    label:a.value.commandeToSend ,
+    createdBy : this.user.codeApc
+
+  }
 
   this.sendPsCommand()
 
@@ -63,11 +71,12 @@ export class HomeComponent implements OnInit {
 
  sendPsCommand(){
 
- this.systemService.sendCommand(this.commandToSend)
+ this.projectService.createNewProject(this.commandToSend)
      .subscribe(r=>{
 
+
       this.hasResponse=true
-      this.response = r.body
+      this.response = `numero : ${r}`
       this.hasError =false
    
        
@@ -76,9 +85,10 @@ export class HomeComponent implements OnInit {
      
      , 
      e=>{
+      console.log(e)
       this.hasError = true
       this.hasResponse=false
-      this.error =e.error
+      this.error =e.message
 
         
      }

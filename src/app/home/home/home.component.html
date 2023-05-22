@@ -73,7 +73,7 @@
 
         <div class="col-md-6 mx-auto  p-3 border rounded shadow-ms ">
           
-          <p>commande powershell</p>
+          <p>Nouveau project</p>
 
           <div class="form-group">
 
@@ -93,16 +93,19 @@
 
             <button class="btn btn-primary mt-2" (click)="displayCommande(form)"   [disabled]="
             commande.value=='' ||
-            (commande.errors?.['required'])">Executer</button>
+            (commande.errors?.['required'])">Enregister</button>
              
             
            <div class="row mt-2">
             
             <div class="col">
 
-              <div *ngIf="hasResponse" class="alert alert-success">
+              <div *ngIf="hasResponse">
 
-                  <p>{{response}}</p>
+                <div class="alert alert-success" role="alert">
+                  Projet cree avec <a href="#" class="alert-link">{{response}}</a>. Give it a click if you like.
+                </div>                    
+                  
   
                </div>
 

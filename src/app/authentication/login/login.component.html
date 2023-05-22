@@ -75,14 +75,15 @@
 
                         <div class="form-group">
                             <label for="">username</label>
-                            <input type="text" class="form-control " name="username" 
+                            <select type="text" class="form-control " name="username" 
                             
-                            [placeholder]="names"   
                             
                                
                              
                             
-                            ngModel required #tempUser="ngModel">
+                            ngModel required #tempUser="ngModel" >
+                            <option ngValue="{{names}}">{{names}}</option>
+                            </select>
                         </div>
                     </div>
                 </div>

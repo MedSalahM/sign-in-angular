@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { LoginComponent } from './authentication/login/login.component';
 import { HomeComponent } from './home/home/home.component'
@@ -14,6 +13,7 @@ import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { SystemUsersComponent } from './system/system-users/system-users.component';
 import { CreateUserComponent } from './system/create-user/create-user.component';
+import { ProjectDetailsComponent } from './project/project-details/project-details.component';
 const customNotifierOptions: NotifierOptions = {
   position: {
 		horizontal: {
@@ -65,13 +65,13 @@ const customNotifierOptions: NotifierOptions = {
     UserDetailsComponent,
     SystemUsersComponent,
     CreateUserComponent,
+    ProjectDetailsComponent,
     
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
     HttpClientModule,
     FormsModule,
     NotifierModule.withConfig(
